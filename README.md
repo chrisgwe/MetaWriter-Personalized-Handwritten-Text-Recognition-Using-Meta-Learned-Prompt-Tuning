@@ -1,25 +1,35 @@
 # MetaWriter: Personalized Handwritten Text Recognition Using Meta-Learned Prompt Tuning
-![image](https://github.com/user-attachments/assets/0baa1f6d-6828-4ecf-86c0-4895b8ec9361)
+
+![MetaWriter Architecture](https://github.com/user-attachments/assets/0baa1f6d-6828-4ecf-86c0-4895b8ec9361)
+
 ## Overview
-MetaWriter is a novel approach to handwritten text recognition that leverages meta-learning and prompt tuning to personalize recognition for individual handwriting styles.
+MetaWriter introduces a novel handwritten text recognition approach that combines meta-learning with prompt tuning to adapt to individual handwriting styles. This method enables personalized recognition without extensive retraining.
+
 ## Requirements
-- **Python**: 3.9
-- **PyTorch**: 2.0.1
+Essential software dependencies to run MetaWriter:
+- **Python**: 3.9 (Required for compatibility)
+- **PyTorch**: 2.0.1 (Deep learning framework)
+
 ## Usage
 
 ### 1. Dataset Preparation
-Download the required datasets:
-- **RIMES**: [Download from Teklia](https://teklia.com/research/rimes-database/)
-- **IAM**: [Download from FKI](https://fki.tic.heia-fr.ch/databases/iam-handwriting-database)
+Prepare your training data by downloading and organizing these standard handwritten text datasets:
 
-Place the datasets in the `data/` directory (or specify your custom path in config).
+- **RIMES**: [Download from Teklia](https://teklia.com/research/rimes-database/)  
+  French handwritten text dataset with various writing styles
+- **IAM**: [Download from FKI](https://fki.tic.heia-fr.ch/databases/iam-handwriting-database)  
+  English handwritten text database containing forms and lines
 
-### 2. transfer_learning Weights
-Load the synthetic data weights before training:
+Store the datasets in the `data/` directory or specify an alternative path in the configuration.
+
+### 2. Transfer Learning Weights Configuration
+Initialize the model with synthetic data weights by modifying the configuration:
+
+```json
 "transfer_learning": {
-                "encoder": [],
-                "decoder": [],
-            },
+    "encoder": [],  // Path to pretrained encoder weights
+    "decoder": []   // Path to pretrained decoder weights
+}
 
 ### 3. Run Training
 Execute the main script example:

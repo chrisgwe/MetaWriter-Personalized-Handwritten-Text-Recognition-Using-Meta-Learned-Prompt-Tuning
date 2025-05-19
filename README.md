@@ -23,25 +23,43 @@ Prepare your training data by downloading and organizing these standard handwrit
 Store the datasets in the `data/` directory or specify an alternative path in the configuration.
 
 ### 2. Transfer Learning Weights Configuration
+
 Initialize the model with synthetic data weights by modifying the configuration:
 
 ```json
-"transfer_learning": {
-    "encoder": [],  // Path to pretrained encoder weights
-    "decoder": []   // Path to pretrained decoder weights
+{
+    "transfer_learning": {
+        "encoder": [],
+        "decoder": []
+    }
 }
 ```
+*Note: Add paths to pretrained encoder/decoder weights inside the brackets*
+
 ### 3. Run Training
+
 Execute the main script example:
-```json
+
+```bash
 python main.py \
-  --dataset_name [your dataset] \        # Specify dataset (IAM/RIMES)
-  --dataset_level [dataset level] \      # Choose processing level
+  --dataset_name [your_dataset] \        # Specify dataset (IAM/RIMES)
+  --dataset_level [dataset_level] \      # Choose processing level
   --dataset_variant _sem \               # Dataset variant suffix
   --batch_size 1 \                       # Samples per batch
   --max_epochs 5000 \                    # Maximum training epochs
   --learning_rate 0.0001 \               # Initial learning rate
-  --transfer_learning_weights [location to your folder] \  # Pretrained weights
-  --output_dir [location to your folder] \  # Results directory
-  --use_amp                             # Enable automatic mixed precision
+  --transfer_learning_weights [path_to_weights_folder] \  # Pretrained weights
+  --output_dir [output_folder] \         # Results directory
+  --use_amp                              # Enable automatic mixed precision
 ```
+
+## Citation
+
+
+```bibtex
+@inproceedings{gu2025metawriter,
+  title={MetaWriter: Personalized Handwritten Text Recognition Using Meta-Learned Prompt Tuning},
+  author={Gu, Wenhao and Gu, Li and Suen, Ching Yee and Wang, Yang},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2025}
+}

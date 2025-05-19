@@ -6,4 +6,16 @@ MetaWriter is a novel approach to handwritten text recognition that leverages me
 - **Python**: 3.9
 - **PyTorch**: 2.0.1
 ## Usage
-(Add basic usage examples here if applicable)
+
+### 1. Dataset Preparation
+Download the required datasets:
+- **RIMES**: [Download from Teklia](https://teklia.com/research/rimes-database/)
+- **IAM**: [Download from FKI](https://fki.tic.heia-fr.ch/databases/iam-handwriting-database)
+
+Place the datasets in the `data/` directory (or specify your custom path in config).
+
+### 2. Pre-trained Weights
+Load the synthetic data pre-trained weights before training:
+```bash
+python load_weights.py --weights path/to/synthetic_weights.pth
+

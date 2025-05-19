@@ -8,8 +8,7 @@ MetaWriter introduces a novel handwritten text recognition approach that combine
 ## Requirements
 Essential software dependencies to run MetaWriter:
 - **Python**: 3.9 (Required for compatibility)
-- **PyTorch**: 2.0.1 (Deep learning framework)
-
+- **Cuda**: 11.7 
 ## Usage
 
 ### 1. Dataset Preparation

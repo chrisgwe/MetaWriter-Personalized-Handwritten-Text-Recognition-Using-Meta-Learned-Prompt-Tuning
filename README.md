@@ -30,16 +30,9 @@ Initialize the model with synthetic data weights by modifying the configuration:
     "encoder": [],  // Path to pretrained encoder weights
     "decoder": []   // Path to pretrained decoder weights
 }
-
+```
 ### 3. Run Training
 Execute the main script example:
-python main.py \
-  --dataset_name [your dataset] \
-  --dataset_level [dataset level] \
-  --dataset_variant _sem \
-  --batch_size 1 \
-  --max_epochs 5000 \
-  --learning_rate 0.0001 \
-  --transfer_learning_weights [location to your folder] \
-  --output_dir [location to your folder] \
-  --use_amp 
+```json
+python main.py \ --dataset_name [your dataset] \ --dataset_level [dataset level] \  --dataset_variant _sem \  --batch_size 1 \ --max_epochs 5000 \ --learning_rate 0.0001 \ --transfer_learning_weights [location to your folder] \  --output_dir [location to your folder] \ --use_amp 
+```

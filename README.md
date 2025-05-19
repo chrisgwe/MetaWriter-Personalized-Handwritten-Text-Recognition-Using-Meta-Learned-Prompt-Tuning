@@ -34,5 +34,14 @@ Initialize the model with synthetic data weights by modifying the configuration:
 ### 3. Run Training
 Execute the main script example:
 ```json
-python main.py \ --dataset_name [your dataset] \ --dataset_level [dataset level] \  --dataset_variant _sem \  --batch_size 1 \ --max_epochs 5000 \ --learning_rate 0.0001 \ --transfer_learning_weights [location to your folder] \  --output_dir [location to your folder] \ --use_amp 
+python main.py \
+  --dataset_name [your dataset] \        # Specify dataset (IAM/RIMES)
+  --dataset_level [dataset level] \      # Choose processing level
+  --dataset_variant _sem \               # Dataset variant suffix
+  --batch_size 1 \                       # Samples per batch
+  --max_epochs 5000 \                    # Maximum training epochs
+  --learning_rate 0.0001 \               # Initial learning rate
+  --transfer_learning_weights [location to your folder] \  # Pretrained weights
+  --output_dir [location to your folder] \  # Results directory
+  --use_amp                             # Enable automatic mixed precision
 ```

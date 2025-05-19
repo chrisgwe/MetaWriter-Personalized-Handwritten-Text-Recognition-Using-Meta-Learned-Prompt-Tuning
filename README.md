@@ -14,8 +14,22 @@ Download the required datasets:
 
 Place the datasets in the `data/` directory (or specify your custom path in config).
 
-### 2. Pre-trained Weights
-Load the synthetic data pre-trained weights before training:
-```bash
-python load_weights.py --weights path/to/synthetic_weights.pth
+### 2. transfer_learning Weights
+Load the synthetic data weights before training:
+"transfer_learning": {
+                "encoder": [],
+                "decoder": [],
+            },
 
+### 3. Run Training
+Execute the main script example:
+python main.py \
+  --dataset_name [your dataset] \
+  --dataset_level [dataset level] \
+  --dataset_variant _sem \
+  --batch_size 1 \
+  --max_epochs 5000 \
+  --learning_rate 0.0001 \
+  --transfer_learning_weights [location to your folder] \
+  --output_dir [location to your folder] \
+  --use_amp 

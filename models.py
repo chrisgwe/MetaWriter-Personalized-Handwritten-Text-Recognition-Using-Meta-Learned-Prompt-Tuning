@@ -62,9 +62,6 @@ class PositionalEncoding2D(Module):
 
 
 class CustomMultiHeadAttention(Module):
-    """
-    Re-implementation of Multi-head Attention
-    """
     def __init__(self, embed_dim, num_heads, dropout=0, proj_value=True):
         super().__init__()
 
@@ -135,9 +132,6 @@ class CustomMultiHeadAttention(Module):
 
 
 class GlobalDecoderLayer(Module):
-    """
-    Transformer Decoder Layer
-    """
 
     def __init__(self, params):
         super(GlobalDecoderLayer, self).__init__()
@@ -189,9 +183,6 @@ class GlobalDecoderLayer(Module):
 
 
 class GlobalAttDecoder(Module):
-    """
-    Stack of transformer decoder layers
-    """
 
     def __init__(self, params):
         super(GlobalAttDecoder, self).__init__()
@@ -235,9 +226,6 @@ class GlobalAttDecoder(Module):
 
 
 class FeaturesUpdater(Module):
-    """
-    Module that handle 2D positional encoding
-    """
     def __init__(self, params):
         super(FeaturesUpdater, self).__init__()
         self.enc_dim = params["enc_dim"]
@@ -253,9 +241,6 @@ class FeaturesUpdater(Module):
 
 
 class GlobalHTADecoder(Module):
-    """
-    DAN decoder module
-    """
     def __init__(self, params):
         super(GlobalHTADecoder, self).__init__()
         self.enc_dim = params["enc_dim"]
@@ -333,9 +318,6 @@ class GlobalHTADecoder(Module):
         return output, preds, hidden_predict, cache, weights
 
     def generate_enc_mask(self, batch_reduced_size, total_size, device):
-        """
-        Generate mask for encoded features
-        """
         batch_size, _, h_max, w_max = total_size
         mask = torch.ones((batch_size, h_max, w_max), dtype=torch.bool, device=device)
         for i, (h, w) in enumerate(batch_reduced_size):
@@ -343,9 +325,6 @@ class GlobalHTADecoder(Module):
         return torch.flatten(mask, start_dim=1, end_dim=2)
 
     def generate_token_mask(self, token_len, total_size, device):
-        """
-        Generate mask for tokens per sample
-        """
         batch_size, len_max = total_size
         mask = torch.zeros((batch_size, len_max), dtype=torch.bool, device=device)
         for i, len_ in enumerate(token_len):
@@ -353,9 +332,6 @@ class GlobalHTADecoder(Module):
         return mask
 
     def generate_target_mask(self, target_len, device):
-        """
-        Generate mask for tokens per time step (teacher forcing)
-        """
         if self.dec_att_win == 1:
             return torch.triu(torch.ones((target_len, target_len), dtype=torch.bool, device=device), diagonal=1)
         else:
